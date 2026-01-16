@@ -1,0 +1,9 @@
+/* File upload hover glow */
+label[for="file"]:hover {
+    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5);
+}
+
+/* Remove ugly default focus */
+input[type="file"]:focus {
+    outline: none;
+}

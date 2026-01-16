@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "name": "Trewa Tech E-Commerce",
+    "url": "https://simitech-designs.vercel.app",
+    "description": "An e-commerce platform for gas, cosmetics, and Wi-Fi services.",
+    "tech_stack": ["Node.js", "Express", "MySQL", "EJS", "CSS"],
+    "category": "Web Application",
+    "status": "active",
+    "created_at": "2025-05-20",
+    "maintained_by": "Trewa Tech Suppliers"
+  },
+  {
+    "id": 2,
+    "name": "Digitalized Dev",
+    "url": "https://youtube.com/@digitalizeddev",
+    "description": "Educational platform for coding tutorials and real-world projects.",
+    "tech_stack": ["JavaScript", "React", "OBS Studio"],
+    "category": "Education",
+    "status": "active",
+    "created_at": "2025-09-18",
+    "maintained_by": "Jeremiah Ndiritu"
+  },
+  {
+    "id": 3,
+    "name": "Forex Trade Journal",
+    "url": "https://forex.com",
+    "description": "A journal to track forex trades, psychology, and performance.",
+    "tech_stack": ["React", "Chart.js", "LocalStorage"],
+    "category": "Finance",
+    "status": "in-development",
+    "created_at": "2026-01-10",
+    "maintained_by": "Solo Developer"
+  },
+  {
+    "id": 4,
+    "name": "Campus Housing System",
+    "url": "https://jumia.co.ke",
+    "description": "System for managing landlords, tenants, and rental verification.",
+    "tech_stack": ["Node.js", "Express", "MySQL", "JWT"],
+    "category": "Property Management",
+    "status": "beta",
+    "created_at": "2026-01-05",
+    "maintained_by": "University Dev Team"
+  }
+]
