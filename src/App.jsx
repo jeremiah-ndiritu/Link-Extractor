@@ -1,5 +1,12 @@
 import FileUpload from "./cmps/FileUpload.jsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import {
+  saveUrls,
+  loadUrls,
+  saveClicked,
+  loadClicked,
+  clearDB,
+} from "./indexedDB.js";
 import "./App.css";
 export default function App() {
   const [urls, setUrls] = useState([]);
@@ -21,6 +28,29 @@ export default function App() {
     percentage: (clicked.length / urls.length) * 100 || 0,
   });
   console.log("Clicked[]: ", clicked);
+  // Load persisted data on first render
+  useEffect(() => {
+    (async () => {
+      const storedUrls = await loadUrls();
+      const storedClicked = await loadClicked();
+      setUrls(storedUrls);
+      setClicked(storedClicked);
+    })();
+  }, []);
+  // Persist URLs when they change
+  useEffect(() => {
+    if (urls.length) {
+      saveUrls(urls);
+    }
+  }, [urls]);
+
+  // Persist clicked URLs
+  useEffect(() => {
+    if (clicked.length) {
+      saveClicked(clicked);
+    }
+  }, [clicked]);
+
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 px-6 py-10">
       {/* Header */}
@@ -54,6 +84,19 @@ export default function App() {
             style={{ width: `${stats().percentage}%` }}
           />
         </div>
+        <button
+          className="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-500 transition"
+          onClick={async () => {
+            if (!confirm("Are you sure you want to clear all stored URLs?"))
+              return;
+            await clearDB();
+            setUrls([]);
+            setClicked([]);
+            window.location.reload();
+          }}
+        >
+          🧹 Clear Database
+        </button>
 
         {/* URL List */}
         <ol className="space-y-3 max-h-[60vh] overflow-y-auto pr-2 url-scroll">
