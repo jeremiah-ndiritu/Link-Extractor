@@ -80,8 +80,12 @@ export default function App() {
             style={{ width: `${stats().percentage}%` }}
           />
         </div>
-        <ClearDBButton />
-        <CopyAllButton textToCopy={urls.join("\n")} />
+        {urls?.length && (
+          <section className="flex justify-around items-center w-full">
+            <ClearDBButton />
+            <CopyAllButton textToCopy={urls.join("\n")} />
+          </section>
+        )}
 
         {/* URL List */}
         <ol className="space-y-3 max-h-[60vh] overflow-y-auto pr-2 url-scroll">
