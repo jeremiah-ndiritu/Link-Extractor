@@ -1,13 +1,9 @@
 import FileUpload from "./cmps/FileUpload.jsx";
 import { useState, useEffect } from "react";
-import {
-  saveUrls,
-  loadUrls,
-  saveClicked,
-  loadClicked,
-  clearDB,
-} from "./indexedDB.js";
+import { saveUrls, loadUrls, saveClicked, loadClicked } from "./indexedDB.js";
 import "./App.css";
+import CopyAllButton from "./cmps/CopyAllButton.jsx";
+import ClearDBButton from "./cmps/ClearDBButton.jsx";
 export default function App() {
   const [urls, setUrls] = useState([]);
   const [clicked, setClicked] = useState([]);
@@ -84,19 +80,8 @@ export default function App() {
             style={{ width: `${stats().percentage}%` }}
           />
         </div>
-        <button
-          className="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-500 transition"
-          onClick={async () => {
-            if (!confirm("Are you sure you want to clear all stored URLs?"))
-              return;
-            await clearDB();
-            setUrls([]);
-            setClicked([]);
-            window.location.reload();
-          }}
-        >
-          🧹 Clear Database
-        </button>
+        <ClearDBButton />
+        <CopyAllButton textToCopy={urls.join("\n")} />
 
         {/* URL List */}
         <ol className="space-y-3 max-h-[60vh] overflow-y-auto pr-2 url-scroll">
